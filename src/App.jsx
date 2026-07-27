@@ -5,7 +5,7 @@ import {
   clients,
   ecommerceServices,
   eventImages,
-  productionImages,
+  productionItems,
   talentImages,
 } from "./data.js";
 
@@ -29,8 +29,10 @@ function chunk(items, size) {
 
 function Gallery({ images, label, variant = "portrait" }) {
   const trackRef = useRef(null);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
   const isMosaic = variant === "portrait" || variant === "event";
   const pageSize = variant === "portrait" ? 5 : 8;
+  const imageSources = images.map((item) => (typeof item === "string" ? item : item.src));
 
   const move = (direction) => {
     const track = trackRef.current;
@@ -59,31 +61,126 @@ function Gallery({ images, label, variant = "portrait" }) {
                   const index = pageIndex * pageSize + itemIndex;
                   return (
                     <figure className="gallery-item" key={image}>
-                      <img
-                        src={image}
-                        alt={`${label} ${index + 1}`}
-                        loading={index > 3 ? "lazy" : "eager"}
-                      />
+                      <button
+                        className="gallery-image-button"
+                        type="button"
+                        aria-label={`Open ${label} image ${index + 1}`}
+                        onClick={() => setLightboxIndex(index)}
+                      >
+                        <img
+                          src={image}
+                          alt={`${label} ${index + 1}`}
+                          loading={index > 3 ? "lazy" : "eager"}
+                        />
+                      </button>
                     </figure>
                   );
                 })}
               </div>
             ))
-          : images.map((image, index) => (
-              <figure className="gallery-item" key={image}>
-                <img
-                  src={image}
-                  alt={`${label} ${index + 1}`}
-                  loading={index > 3 ? "lazy" : "eager"}
-                />
-              </figure>
-            ))}
+          : images.map((item, index) => {
+              const image = typeof item === "string" ? item : item.src;
+              const title = typeof item === "string" ? "" : item.title;
+              const description = typeof item === "string" ? "" : item.description;
+              return (
+                <figure className="gallery-item" key={image} tabIndex={title ? 0 : undefined}>
+                  <img
+                    src={image}
+                    alt={title || `${label} ${index + 1}`}
+                    loading={index > 3 ? "lazy" : "eager"}
+                  />
+                  {title && (
+                    <figcaption className="gallery-hover-info">
+                      <div>
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                      </div>
+                    </figcaption>
+                  )}
+                </figure>
+              );
+            })}
       </div>
       <button
         className="gallery-control gallery-control--next"
         type="button"
         aria-label={`Next ${label} image`}
         onClick={() => move(1)}
+      >
+        <img src={galleryArrow} alt="" />
+      </button>
+      <ImageLightbox
+        images={imageSources}
+        index={lightboxIndex}
+        label={label}
+        onChange={setLightboxIndex}
+      />
+    </div>
+  );
+}
+
+function ImageLightbox({ images, index, label, onChange }) {
+  const open = index !== null;
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onChange(null);
+      if (event.key === "ArrowLeft") {
+        onChange((current) => (current - 1 + images.length) % images.length);
+      }
+      if (event.key === "ArrowRight") {
+        onChange((current) => (current + 1) % images.length);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.classList.add("modal-open");
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.classList.remove("modal-open");
+    };
+  }, [images.length, onChange, open]);
+
+  if (!open) return null;
+
+  const previous = () =>
+    onChange((current) => (current - 1 + images.length) % images.length);
+  const next = () => onChange((current) => (current + 1) % images.length);
+
+  return (
+    <div
+      className="image-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${label} image, detailed view`}
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onChange(null);
+      }}
+    >
+      <button
+        className="lightbox-close"
+        type="button"
+        onClick={() => onChange(null)}
+        aria-label="Close image"
+      >
+        ×
+      </button>
+      <button
+        className="lightbox-control lightbox-control--previous"
+        type="button"
+        onClick={previous}
+        aria-label="Previous image"
+      >
+        <img src={galleryArrow} alt="" />
+      </button>
+      <div className="lightbox-media">
+        <img src={images[index]} alt={`${label} ${index + 1}`} />
+      </div>
+      <button
+        className="lightbox-control lightbox-control--next"
+        type="button"
+        onClick={next}
+        aria-label="Next image"
       >
         <img src={galleryArrow} alt="" />
       </button>
@@ -225,7 +322,7 @@ export function App() {
             title="Production Studio"
             copy="Crafting visual masterpieces with cutting-edge technology and unparalleled artistry. From film to digital media, we bring visionary stories to life."
           />
-          <Gallery images={productionImages} label="Production Studio" variant="landscape" />
+          <Gallery images={productionItems} label="Production Studio" variant="landscape" />
         </section>
 
         <section className="content-section gallery-section talent-section">

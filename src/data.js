@@ -26,11 +26,30 @@ export const ecommerceServices = [
   },
 ];
 
-export const productionImages = [
-  asset("556ea0_c4bf53cb413d44848d88cd6a121542d8~mv2.jpg"),
-  asset("556ea0_16c3b0fa82734d41828b415566b21043~mv2.jpg"),
-  asset("556ea0_7a3d47a2efee4d3b9f34b9ba21e622b3~mv2.jpg"),
-  asset("556ea0_66be43435ba94ae3947882809e688109~mv2.png"),
+export const productionItems = [
+  {
+    src: asset("556ea0_c4bf53cb413d44848d88cd6a121542d8~mv2.jpg"),
+    title: "Rahasia Bangsawan",
+    description:
+      "This is an emotionally rich and plot-twisting modern urban romance drama. The story revolves around the emotional entanglements between the female lead, Jessica Hermawan, and the male lead, Michael Sanjaya, depicting their journey from strangers to confidants and from misunderstandings to falling in love in a romantic tale.",
+  },
+  {
+    src: asset("556ea0_16c3b0fa82734d41828b415566b21043~mv2.jpg"),
+    title: "Pernikahan Dadakan Tuan Muda",
+    description:
+      "This is an urban romance drama centered around Wenny and Ivan Narendra. Wenny, an independent woman, unexpectedly marries Ivan Narendra, a CEO, through a series of misunderstandings and coincidences. Their married life is filled with ups and downs, evolving from mutual misunderstanding to deep affection. Ivan Narendra's family, especially his mother, has a complicated process of accepting Wenny, while Wenny's past is gradually unveiled, including her complex relationship with Bima Wijaya and her experience of a past miscarriage.",
+  },
+  {
+    src: asset("556ea0_7a3d47a2efee4d3b9f34b9ba21e622b3~mv2.jpg"),
+    title: "Pengantin Presdir yang Tak Terduga",
+    description:
+      "This is an urban emotional drama centered around the love and professional lives of Lidya and Andrew. Lidya, a straightforward and self-reliant woman, accidentally spends the night with the domineering CEO Andrew after a drunken incident. Their relationship evolves from an awkward one-night stand to a complex emotional entanglement. After discovering Lidya's true identity, Andrew decides to take responsibility, leading to a unique love story.",
+  },
+  {
+    src: asset("556ea0_66be43435ba94ae3947882809e688109~mv2.png"),
+    title: "",
+    description: "",
+  },
 ];
 
 export const talentImages = [
