@@ -337,6 +337,42 @@ export function App() {
               </p>
             </div>
           </article>
+
+          <div
+            className="grupbeli-heading agricultural-trade-heading"
+            id="agricultural-trade"
+          >
+            <h3>Agricultural Commodities Trading</h3>
+            <span className="accent-line" aria-hidden="true" />
+            <p>Connecting reliable agricultural supply with regional and global demand</p>
+          </div>
+
+          <article className="grupbeli-detail">
+            <div className="grupbeli-visual">
+              <img
+                src={brand.agriculturalTradeVisual}
+                alt="Bulk corn and rice commodities at a grain export facility"
+              />
+            </div>
+            <div className="grupbeli-copy">
+              <p>
+                We facilitate large-scale agricultural commodity trading by connecting qualified
+                producers, processors, and buyers through a dependable regional supply network.
+                Our focus includes staple commodities such as rice, corn, soybeans, and other
+                essential agricultural products.
+              </p>
+              <p>
+                From supplier verification and quality coordination to pricing, documentation, and
+                logistics planning, we support each stage of the transaction with clear processes
+                and responsive communication.
+              </p>
+              <p>
+                By combining local market knowledge with efficient supply-chain execution, we help
+                partners secure consistent volumes, manage delivery requirements, and build
+                sustainable long-term trading relationships.
+              </p>
+            </div>
+          </article>
         </section>
 
         <section className="content-section gallery-section production-section">

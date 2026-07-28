@@ -6,6 +6,7 @@ export const brand = {
   heroVideo: asset("hero-video.mp4"),
   grupBeliLogo: asset("556ea0_42990afe94ae4c608696935ff5f1eb34~mv2.png"),
   grupBeliVisual: asset("556ea0_69959032e22e47bba4fcc9459430abe9~mv2.png"),
+  agriculturalTradeVisual: asset("agricultural-commodities-trading.jpg"),
 };
 
 export const ecommerceServices = [

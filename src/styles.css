@@ -308,6 +308,22 @@ a {
   font-weight: 400;
 }
 
+.agricultural-trade-heading {
+  margin-top: 104px;
+}
+
+.agricultural-trade-heading h3 {
+  margin: 0;
+  font-family: "Barlow ExtraLight", "Barlow", Arial, sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.agricultural-trade-heading .accent-line {
+  margin-top: 24px;
+}
+
 .grupbeli-detail {
   width: min(100%, 980px);
   margin: 0 auto;
@@ -956,6 +972,14 @@ a {
   .grupbeli-heading p {
     font-size: 14px;
     line-height: 1.6;
+  }
+
+  .agricultural-trade-heading {
+    margin-top: 72px;
+  }
+
+  .agricultural-trade-heading h3 {
+    font-size: 30px;
   }
 
   .grupbeli-detail {
