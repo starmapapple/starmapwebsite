@@ -104,4 +104,4 @@ export const clients = [
 ];
 
 export const address =
-  "Jl. Imam Mahbud Jl. KH.Moh.Mansyur No.20, RT.4/RW.1, Duri Pulo, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10140";
+  "StarMap Indonesia - Susilo, Jl. Dr. Susilo Raya No.6B, RT.1/RW.3, Grogol, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11450";
