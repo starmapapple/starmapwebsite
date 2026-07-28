@@ -121,16 +121,31 @@ function Gallery({ images, label, variant = "portrait" }) {
 
 function ImageLightbox({ images, index, label, onChange }) {
   const open = index !== null;
+  const [zoomed, setZoomed] = useState(false);
+
+  const close = () => {
+    setZoomed(false);
+    onChange(null);
+  };
+
+  const move = (direction) => {
+    setZoomed(false);
+    onChange((current) => (current + direction + images.length) % images.length);
+  };
 
   useEffect(() => {
     if (!open) return undefined;
     const onKeyDown = (event) => {
-      if (event.key === "Escape") onChange(null);
-      if (event.key === "ArrowLeft") {
-        onChange((current) => (current - 1 + images.length) % images.length);
+      if (event.key === "Escape") {
+        setZoomed(false);
+        onChange(null);
       }
-      if (event.key === "ArrowRight") {
-        onChange((current) => (current + 1) % images.length);
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        const direction = event.key === "ArrowLeft" ? -1 : 1;
+        setZoomed(false);
+        onChange(
+          (current) => (current + direction + images.length) % images.length,
+        );
       }
     };
     document.addEventListener("keydown", onKeyDown);
@@ -143,10 +158,6 @@ function ImageLightbox({ images, index, label, onChange }) {
 
   if (!open) return null;
 
-  const previous = () =>
-    onChange((current) => (current - 1 + images.length) % images.length);
-  const next = () => onChange((current) => (current + 1) % images.length);
-
   return (
     <div
       className="image-lightbox"
@@ -154,13 +165,13 @@ function ImageLightbox({ images, index, label, onChange }) {
       aria-modal="true"
       aria-label={`${label} image, detailed view`}
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onChange(null);
+        if (event.target === event.currentTarget) close();
       }}
     >
       <button
         className="lightbox-close"
         type="button"
-        onClick={() => onChange(null)}
+        onClick={close}
         aria-label="Close image"
       >
         ×
@@ -168,18 +179,30 @@ function ImageLightbox({ images, index, label, onChange }) {
       <button
         className="lightbox-control lightbox-control--previous"
         type="button"
-        onClick={previous}
+        onClick={() => move(-1)}
         aria-label="Previous image"
       >
         <img src={galleryArrow} alt="" />
       </button>
       <div className="lightbox-media">
-        <img src={images[index]} alt={`${label} ${index + 1}`} />
+        <button
+          className="lightbox-zoom-button"
+          type="button"
+          aria-label={zoomed ? "Zoom out image" : "Zoom in image"}
+          aria-pressed={zoomed}
+          onClick={() => setZoomed((current) => !current)}
+        >
+          <img
+            className={zoomed ? "is-zoomed" : ""}
+            src={images[index]}
+            alt={`${label} ${index + 1}`}
+          />
+        </button>
       </div>
       <button
         className="lightbox-control lightbox-control--next"
         type="button"
-        onClick={next}
+        onClick={() => move(1)}
         aria-label="Next image"
       >
         <img src={galleryArrow} alt="" />
