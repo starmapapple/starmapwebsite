@@ -572,7 +572,7 @@ a {
 }
 
 .client-grid {
-  width: min(100%, 970px);
+  width: min(calc(100% - 40px), 76.7vw, 1280px);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -581,7 +581,8 @@ a {
 }
 
 .client-card {
-  height: 277px;
+  height: auto;
+  aspect-ratio: 194 / 277;
   display: grid;
   place-items: center;
   padding: 20px;
@@ -623,8 +624,9 @@ a {
 }
 
 .map-frame {
-  width: min(100%, 885px);
-  height: 460px;
+  width: min(calc(100% - 40px), 70vw, 1160px);
+  height: auto;
+  aspect-ratio: 885 / 460;
   margin: 0 auto;
   overflow: hidden;
   background: #191919;
@@ -863,8 +865,18 @@ a {
   }
 
   .client-grid {
+    width: 100%;
     grid-template-columns: repeat(5, minmax(130px, 1fr));
     overflow-x: auto;
+  }
+
+  .client-card {
+    height: 277px;
+    aspect-ratio: auto;
+  }
+
+  .map-frame {
+    width: 100%;
   }
 }
 
@@ -1111,6 +1123,7 @@ a {
 
   .map-frame {
     height: 360px;
+    aspect-ratio: auto;
   }
 
   .address-link {
