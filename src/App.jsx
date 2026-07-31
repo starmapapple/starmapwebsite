@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  address,
   brand,
   clients,
   ecommerceServices,
   eventImages,
+  mapEmbedUrl,
   productionItems,
   talentImages,
 } from "./data.js";
@@ -249,7 +249,6 @@ function VideoModal({ open, onClose }) {
 
 export function App() {
   const [videoOpen, setVideoOpen] = useState(false);
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 
   return (
     <>
@@ -424,7 +423,7 @@ export function App() {
           <div className="map-frame">
             <iframe
               title="StarMap office location"
-              src={mapSrc}
+              src={mapEmbedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

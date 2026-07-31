@@ -103,5 +103,5 @@ export const clients = [
   ["GQ", asset("556ea0_17c14e60f78740af84f71336216c4661~mv2.png")],
 ];
 
-export const address =
-  "Tai He, Ruko Garden Shopping Arcade Central Park Blok B. 09AR, Letjen S. Parman.Kav. 28, RT.12/RW.6, Tj. Duren Sel, RT.12/RW.6, Kota, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470, Indonesia";
+export const mapEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1983.32505976231!2d106.7873568!3d-6.177569!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7004df9a691%3A0xc02aa6980049746c!2sTai%20He!5e0!3m2!1sen!2sid!4v1785474143587!5m2!1sen!2sid";
