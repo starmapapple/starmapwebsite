@@ -104,4 +104,4 @@ export const clients = [
 ];
 
 export const address =
-  "Tai He, Ruko Garden Shopping Arcade Central Park Blok B. 09AR, Letjen S. Parman.Kav. 28, RT.12/RW.6, Tj. Duren Sel, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470";
+  "Tai He, Ruko Garden Shopping Arcade Central Park Blok B. 09AR, Letjen S. Parman.Kav. 28, RT.12/RW.6, Tj. Duren Sel, RT.12/RW.6, Kota, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470, Indonesia";
