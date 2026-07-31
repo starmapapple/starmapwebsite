@@ -104,4 +104,4 @@ export const clients = [
 ];
 
 export const address =
-  "StarMap Indonesia - Susilo, Jl. Dr. Susilo Raya No.6B, RT.1/RW.3, Grogol, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11450";
+  "Tai He, Ruko Garden Shopping Arcade Central Park Blok B. 09AR, Letjen S. Parman.Kav. 28, RT.12/RW.6, Tj. Duren Sel, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470";
